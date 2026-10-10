@@ -40,7 +40,7 @@ My research interests include:
 
 <h1 id="teaching">🧑‍🏫 Teaching</h1>
 
-- [Term / Year]: [Course name, role, and institution to be added.]
+- **[Term / Year]**: [Course name, role, and institution to be added.]
 
 <h1 id="services">🔍 Services</h1>
 
