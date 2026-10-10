@@ -1,72 +1,42 @@
+# zzsyppt.github.io
 
-<h1 align="center">
-AcadHomepage
-</h1>
+个人学术主页，基于 [AcadHomepage 原始模板](https://github.com/RayeRen/acad-homepage.github.io)。
+模板来源版本：`2cc1577eeaf2f74dede6d016a70722dbd409ea2f`。保留原始 MIT 许可证。
 
-<div align="center">
+网站地址：https://zzsyppt.github.io/
 
-[![](https://img.shields.io/github/stars/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io)
-[![](https://img.shields.io/github/forks/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io)
-[![](https://img.shields.io/github/issues/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io)
-[![](https://img.shields.io/github/license/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io/blob/main/LICENSE)  | [中文文档](./docs/README-zh.md) 
-</div>
+## 替换占位内容
 
-<p align="center">A Modern and Responsive Academic Personal Homepage</p>
+- `_config.yml`：姓名、职位、机构、地址、邮箱和社交链接。
+- `_pages/about.md`：个人简介、研究方向、News、Publications、Teaching、Services 和 Alumni。
+- `_data/navigation.yml`：顶部导航；链接要与正文的 HTML `id` 一致。
+- `images/avatar-placeholder.svg`：头像占位图。上传照片后修改 `_config.yml` 的 `author.avatar`。
+- `_includes/head/custom.html`：网站图标。
 
-<p align="center">
-    <br>
-    <img src="docs/screenshot.png" width="100%"/>
-    <br>
-</p>
+空邮箱与 Scholar 链接目前显示“to be added”。填写 `_config.yml` 后会自动显示真实链接。
+不需要的栏目可以从 `about.md` 及 `navigation.yml` 同时删除。
 
-Some examples:
-- [Demo Page](https://rayeren.github.io/acad-homepage.github.io/)
-- [Personal Homepage of the author](https://rayeren.github.io/)
+## 发布
 
-## Key Features
-- **Automatically update google scholar citations**: using the google scholar crawler and github action, this REPO can update the author citations and publication citations automatically.
-- **Support Google analytics**: you can trace the traffics of your homepage by easy configuration.
-- **Responsive**: this homepage automatically adjust for different screen sizes and viewports.
-- **Beautiful and Simple Design**: this homepage is beautiful and simple, which is very suitable for academic personal homepage.
-- **SEO**: search Engine Optimization (SEO) helps search engines find the information you publish on your homepage easily, then rank it against similar websites.
+在仓库 **Settings → Pages** 中选择 **Deploy from a branch**，分支为 `main`，目录为 `/ (root)`，保存。
+GitHub Pages 使用 Jekyll 构建；后续提交到 `main` 会自动更新网站。
 
-## Quick Start
+## 本地运行
 
-1. Fork this REPO and rename to `USERNAME.github.io`, where `USERNAME` is your github USERNAME.
-1. Configure the google scholar citation crawler:
-    1. Find your google scholar ID in the url of your google scholar page (e.g., https://scholar.google.com/citations?user=SCHOLAR_ID), where `SCHOLAR_ID` is your google scholar ID.
-    1. Set GOOGLE_SCHOLAR_ID variable to your google scholar ID in `Settings -> Secrets -> Actions -> New repository secret` of the REPO website with `name=GOOGLE_SCHOLAR_ID` and `value=SCHOLAR_ID`.
-    1. Click the `Action` of the REPO website and enable the workflows by clicking *"I understand my workflows, go ahead and enable them"*. This github action will generate google scholar citation stats data `gs_data.json` in `google-scholar-stats` branch of your REPO. When you update your main branch, this action will be triggered. This action will also be trigger 08:00 UTC everyday.
-1. Generate favicon using [favicon-generator](https://redketchup.io/favicon-generator) and download all generated files to `REPO/images`.
-1. Modify the configuration of your homepage `_config.yml`:
-    1. `title`: the title of your homepage
-    1. `description`: the description of your homepage
-    1. `repository`: USER_NAME/REPO_NAME  
-    1. `google_analytics_id` (optional): google analytics ID
-    1. SEO Related keys (optional): get these keys from search engine consoles (e.g. Google, Bing and Baidu) and paste here.
-    1. `author`: the author information of this homepage, including some other websites, emails, city and univeristy.
-    1. More configuration details are described in the comments.
-1. Add your homepage content in `_pages/about.md`.
-    1. You can use html+markdown syntax just same as jekyll.
-    1. You can use a `<span>` tag with class `show_paper_citations` and attribute `data` to display the citations of your paper. Set the data to the google scholar paper ID. For
-        ```html
-        <span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span>
-        ``` 
-        > Q: How to get the google scholar paper ID?   
-        > A: Enter your google scholar homepage and click the paper name. Then you can see the paper ID from `citation_for_view=XXXX`, where `XXXX` is the required paper ID.
-1. Your page will be published at `https://USERNAME.github.io`.
+安装 Ruby、Bundler 和 Jekyll 环境后：
 
-## Debug Locally
+```sh
+bundle install
+bundle exec jekyll serve
+```
 
-1. Clone your REPO to local using `git clone`.
-1. Install Jekyll building environment, including `Ruby`, `RubyGems`, `GCC` and `Make` following [the installation guide](https://jekyllrb.com/docs/installation/#requirements).
-1. Run `bash run_server.sh` to start Jekyll livereload server.
-1. Open http://127.0.0.1:4000 in your browser.
-1. If you change the source code of the website, the livereload server will automatically refresh.
-1. When you finish the modification of your homepage, `commit` your changings and `push` to your remote REPO using `git` command.
+打开 http://127.0.0.1:4000 。
 
-# Acknowledges
+引用统计与 Analytics 默认未启用。添加实际 Scholar 信息后，可恢复原模板的引用爬虫及计划任务。
 
-- AcadHomepage incorporates Font Awesome, which is distributed under the terms of the SIL OFL 1.1 and MIT License.
-- AcadHomepage is influenced by the github repo [mmistakes/minimal-mistakes](https://github.com/mmistakes/minimal-mistakes), which is distributed under the MIT License.
-- AcadHomepage is influenced by the github repo [academicpages/academicpages.github.io](https://github.com/academicpages/academicpages.github.io), which is distributed under the MIT License.
+## Acknowledgments
+
+- [AcadHomepage](https://github.com/RayeRen/acad-homepage.github.io), MIT License, Copyright (c) 2022 Yi Ren.
+- [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes), MIT License.
+- [Academic Pages](https://github.com/academicpages/academicpages.github.io), MIT License.
+- Font Awesome, SIL OFL 1.1 and MIT License.
